@@ -14,15 +14,15 @@ const Figure = ({
   return (
     <figure className="text-center" id="exportar">
       <p
-        className="w-100 px-30 h1 text-center"
-        style={{ color: `rgba(${r},${g},${b},${a})` }}
+        className="textMeme fs-3 text-center"
+        style={{ color: `rgba(${r},${g},${b},${a})`, wordWrap: 'break-word' }}
       >
         {memeTextUp}{' '}
       </p>
       <Image srcImg={memeImg} imgAlt={imgAlt} />
       <p
-        className="w-100 px-30 h1 text-center "
-        style={{ color: `rgba(${r},${g},${b},${a})` }}
+        className="textMeme fs-3 text-center "
+        style={{ color: `rgba(${r},${g},${b},${a})` , wordWrap: 'break-word' }}
       >
         {memeTextDown}
       </p>
