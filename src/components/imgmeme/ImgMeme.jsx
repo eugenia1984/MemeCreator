@@ -1,52 +1,82 @@
 import React, { useState } from 'react'
+import { SketchPicker } from 'react-color'
 import html2canvas from 'html2canvas'
+import Swal from 'sweetalert2'
 import Subtitle from '../atoms/headlines/Subtitle'
 import Figure from '../molecule/Figure'
 import { options } from '../../utils/utils'
-import Button from '../atoms/Button'
+import Button from '../atoms/button/Button'
+import './ImgMeme.css'
+import InputForm from '../atoms/input/InputForm'
 
 const ImgMemes = () => {
   const d = document
   const [memeImg, setMemeImg] = useState('1')
-  const [memeText, setMemeText] = useState('')
+  const [memeTextUp, setMemeTextUp] = useState('')
+  const [memeTextDown, setMemeTextDown] = useState('')
+  const [sketchPickerColor, setSketchPickerColor] = useState({
+    r: '31',
+    g: '112',
+    b: '19',
+    a: '1'
+  })
+  const Swal = require('sweetalert2')
 
   const handleMemeImg = (e) => {
     setMemeImg(e.target.value)
   }
 
-  const handleMemeText = (e) => {
-    setMemeText(e.target.value)
+  const handleMemeTextUp = (e) => {
+    setMemeTextUp(e.target.value)
+  }
+
+  const handleMemeTextDown = (e) => {
+    setMemeTextDown(e.target.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     html2canvas(d.querySelector('#exportar')).then(function (canvas) {
-      //document.body.appendChild(canvas)
-      let img = canvas.toDataURL('memes/jpg')
-      let link = d.createElement('a')
+      const img = canvas.toDataURL('memes/jpg')
+      const link = d.createElement('a')
       link.download = 'new-meme.jpg'
       link.href = img
       link.click()
     })
     // reset to intial state
     setMemeImg('1')
-    setMemeText('')
+    setMemeTextUp('')
+    setMemeTextDown('')
+    setSketchPickerColor({
+      r: '31',
+      g: '112',
+      b: '19',
+      a: '1'
+    })
+    // confirm alert
+    Swal.fire({
+      icon: 'success',
+      title: 'Congratas!',
+      text: 'The meme has been downloaded'
+    })
   }
 
   return (
     <>
       <section>
         <form onSubmit={handleSubmit}>
-          <Subtitle subtitleText="Enter the text of your meme" />
-          <input
-            onChange={handleMemeText}
-            className="form-control w-50 m-50 m-auto d-block"
-            type="text"
-            placeholder="Put your phrase"
-            name="meme"
-            arial-label="meme's phrase"
-            value={memeText}
-          ></input>
+          <Subtitle subtitleText="Enter the text of your meme to be shown on the top of the image" />
+          <InputForm
+            onChange={handleMemeTextUp}
+            value={memeTextUp}
+            name="meme1"
+          />
+          <Subtitle subtitleText="Enter the text of your meme to be shown at the bottom of the image" />
+          <InputForm
+            onChange={handleMemeTextDown}
+            value={memeTextDown}
+            name="meme2"
+          />
           <Subtitle subtitleText="Choose your image" />
           <select
             onChange={handleMemeImg}
@@ -62,7 +92,23 @@ const ImgMemes = () => {
               )
             })}
           </select>
-          <Figure memeText={memeText} memeImg={memeImg} imgAlt="meme" />
+          <section className="my-5 sketchpicker">
+            <SketchPicker
+              onChange={(color) => {
+                setSketchPickerColor(color.rgb)
+              }}
+              color={sketchPickerColor}
+            />
+          </section>
+          <section className="newMeme">
+            <Figure
+              memeTextUp={memeTextUp}
+              memeTextDown={memeTextDown}
+              memeImg={memeImg}
+              imgAlt="meme"
+              sketchPickerColor={sketchPickerColor}
+            />
+          </section>
           <Button type="submit" btnText="Download meme" />
         </form>
       </section>

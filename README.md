@@ -10,6 +10,8 @@ La quinta práctica del curso de **React** con **Codo a Codo**.
 
 - Color de fondo del meme 
 
+Agregue la opción de poder modificar el color del texto y donde se ve el mismo (arriba de la imagen, abajo de la imagen, en ambos lados).
+
 ---
 
 ## Demo
@@ -38,6 +40,8 @@ La quinta práctica del curso de **React** con **Codo a Codo**.
 -[**html2canvas**](https://html2canvas.hertzen.com/)
 
 -**create-react-app** para armar la aplicación.
+
+- **dependencias del proyecto**: react, react-bootstrap, react-color, react-dom, react-scripts
 
 ---
 
