@@ -49,18 +49,18 @@ Agregue la opción de poder modificar el color del texto y donde se ve el mismo 
 
 ## Versión Mobile/Tablet:
 
-![image](https://user-images.githubusercontent.com/72580574/233728719-78d9dd29-27dc-49ef-be8d-517c0be2862e.png)
+![primera parte de vista mobile/tablet](https://user-images.githubusercontent.com/72580574/233728719-78d9dd29-27dc-49ef-be8d-517c0be2862e.png)
 
-![image](https://user-images.githubusercontent.com/72580574/233728773-cbfc5f92-4cd7-4bde-b94e-41b9d370d94e.png)
+![segunda parte de vista mobile/tablet](https://user-images.githubusercontent.com/72580574/233728773-cbfc5f92-4cd7-4bde-b94e-41b9d370d94e.png)
 
 - Al hacer las descarga se muestra un cartel de vconfirmación utilizanod SweetAlert2:
 
-![image](https://user-images.githubusercontent.com/72580574/233728871-87807543-fbbc-4286-9eb5-bacccd2f2b93.png)
+![mensaje de confirmacion de descarga de meme](https://user-images.githubusercontent.com/72580574/233729418-bb6f85b3-f0cc-4173-8913-90ad750beb63.png)
 
 
 ## Versión Desktop:
 
-![image](https://user-images.githubusercontent.com/72580574/233728627-f64c9889-c1d4-4ec3-9ea9-e74875cb8faa.png)
+![vista en vestion desktop](https://user-images.githubusercontent.com/72580574/233728627-f64c9889-c1d4-4ec3-9ea9-e74875cb8faa.png)
 
 ---
 
