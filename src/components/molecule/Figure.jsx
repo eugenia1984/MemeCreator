@@ -22,7 +22,7 @@ const Figure = ({
       <Image srcImg={memeImg} imgAlt={imgAlt} />
       <p
         className="textMeme fs-3 text-center "
-        style={{ color: `rgba(${r},${g},${b},${a})` , wordWrap: 'break-word' }}
+        style={{ color: `rgba(${r},${g},${b},${a})`, wordWrap: 'break-word' }}
       >
         {memeTextDown}
       </p>

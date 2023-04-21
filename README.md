@@ -43,6 +43,8 @@ Agregue la opción de poder modificar el color del texto y donde se ve el mismo 
 
 - **dependencias del proyecto**: react, react-bootstrap, react-color, react-dom, react-scripts
 
+- [**API memes**](https://api.imgflip.com/), haciendo el fetch a `https://api.imgflip.com/get_memes`, se muestran las imagenes de las 10 primeras. Dentro del proyecto, en **api**/ **Response-mockup.json** se copio una respuesta de la misma API para tener como ejemplo.
+
 ---
 
 

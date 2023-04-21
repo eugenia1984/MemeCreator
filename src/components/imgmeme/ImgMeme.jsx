@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SketchPicker } from 'react-color'
 import html2canvas from 'html2canvas'
-import Swal from 'sweetalert2'
 import Subtitle from '../atoms/headlines/Subtitle'
 import Figure from '../molecule/Figure'
-import { options } from '../../utils/utils'
 import Button from '../atoms/button/Button'
 import './ImgMeme.css'
 import InputForm from '../atoms/input/InputForm'
@@ -12,7 +10,7 @@ import LabelForm from '../atoms/label/LabelForm'
 
 const ImgMemes = () => {
   const d = document
-  const [memeImg, setMemeImg] = useState('1')
+  const [memeImg, setMemeImg] = useState('https://i.imgflip.com/1g8my4.jpg')
   const [memeTextUp, setMemeTextUp] = useState('')
   const [memeTextDown, setMemeTextDown] = useState('')
   const [sketchPickerColor, setSketchPickerColor] = useState({
@@ -21,6 +19,7 @@ const ImgMemes = () => {
     b: '19',
     a: '1'
   })
+  const [allMemes, setAllMemes] = useState([])
   const Swal = require('sweetalert2')
 
   const handleMemeImg = (e) => {
@@ -38,14 +37,14 @@ const ImgMemes = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     html2canvas(d.querySelector('#exportar')).then(function (canvas) {
-      const img = canvas.toDataURL('memes/jpg')
+      const img = canvas.toDataURL('memes/jpg') // aca hay que cambiar a quetome el memeImg el problema es que viene de otra url
       const link = d.createElement('a')
       link.download = 'new-meme.jpg'
       link.href = img
       link.click()
     })
     // reset to intial state
-    setMemeImg('1')
+    setMemeImg('https://i.imgflip.com/1g8my4.jpg')
     setMemeTextUp('')
     setMemeTextDown('')
     setSketchPickerColor({
@@ -57,10 +56,22 @@ const ImgMemes = () => {
     // confirm alert
     Swal.fire({
       icon: 'success',
-      title: 'Congratas!',
+      title: 'Congrats!',
       text: 'The meme has been downloaded'
     })
   }
+
+  useEffect(() => {
+    async function getMemes() {
+      const res = await fetch('https://api.imgflip.com/get_memes')
+      const data = await res.json()
+      setAllMemes(data.data.memes.slice(0, 11))
+    }
+    getMemes()
+  }, [])
+
+  // Este para ver si traigo bien las imagenes, despues se borra
+  console.log(allMemes) 
 
   return (
     <>
@@ -91,18 +102,19 @@ const ImgMemes = () => {
               <Subtitle subtitleText="3 - Choose your image" />
               <select
                 onChange={handleMemeImg}
-                className="form-select form-select-lg mb-3 w-50 m-auto"
+                className="form-select form-select-lg mb-3 w-100 m-auto"
                 arial-label=".form-select-lg example"
                 value={memeImg}
               >
-                {options.map((option) => {
+                {allMemes.map((meme) => {
                   return (
-                    <option key={option.id} value={option.id}>
-                      {option.name}
+                    <option key={meme.id} value={meme.url}>
+                      {meme.name}
                     </option>
                   )
                 })}
               </select>
+              <Subtitle subtitleText="4- Choose the color of the text" />
               <section className="my-5 sketchpicker">
                 <SketchPicker
                   onChange={(color) => {

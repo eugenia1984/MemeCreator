@@ -4,7 +4,7 @@ import './Image.css'
 const Image = ({ srcImg, imgAlt }) => {
   return (
     <img
-      src={`./memes/${srcImg}.jpg`}
+      src={srcImg}
       className="figure-img mt-3 d-block m-auto"
       alt={imgAlt}
     />
