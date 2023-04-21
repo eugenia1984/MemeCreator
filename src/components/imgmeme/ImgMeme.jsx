@@ -66,59 +66,68 @@ const ImgMemes = () => {
     <>
       <section>
         <form onSubmit={handleSubmit}>
-          <LabelForm
-            htmlFor="meme1"
-            text="Enter the text of your meme to be shown on the top of the image"
-          />
-          <InputForm
-            onChange={handleMemeTextUp}
-            value={memeTextUp}
-            name="meme1"
-            id="meme1"
-          />
-          <LabelForm
-            htmlFor="meme2"
-            text="Enter the text of your meme to be shown at the bottom of the image"
-          />
-          <InputForm
-            onChange={handleMemeTextDown}
-            value={memeTextDown}
-            name="meme2"
-            id="meme2"
-          />
-          <Subtitle subtitleText="Choose your image" />
-          <select
-            onChange={handleMemeImg}
-            className="form-select form-select-lg mb-3 w-50 m-auto"
-            arial-label=".form-select-lg example"
-            value={memeImg}
-          >
-            {options.map((option) => {
-              return (
-                <option key={option.id} value={option.id}>
-                  {option.name}
-                </option>
-              )
-            })}
-          </select>
-          <section className="my-5 sketchpicker">
-            <SketchPicker
-              onChange={(color) => {
-                setSketchPickerColor(color.rgb)
-              }}
-              color={sketchPickerColor}
-            />
-          </section>
-          <section className="newMeme">
-            <Figure
-              memeTextUp={memeTextUp}
-              memeTextDown={memeTextDown}
-              memeImg={memeImg}
-              imgAlt="meme"
-              sketchPickerColor={sketchPickerColor}
-            />
-          </section>
-          <Button type="submit" btnText="Download meme" />
+          <div className="row">
+            <div className="col-sm-12 col-lg-6">
+              <LabelForm
+                htmlFor="meme1"
+                text="1 - Enter the text of your meme to be shown on the top of the image"
+              />
+              <InputForm
+                onChange={handleMemeTextUp}
+                value={memeTextUp}
+                name="meme1"
+                id="meme1"
+              />
+              <LabelForm
+                htmlFor="meme2"
+                text="2 - Enter the text of your meme to be shown at the bottom of the image"
+              />
+              <InputForm
+                onChange={handleMemeTextDown}
+                value={memeTextDown}
+                name="meme2"
+                id="meme2"
+              />
+              <Subtitle subtitleText="3 - Choose your image" />
+              <select
+                onChange={handleMemeImg}
+                className="form-select form-select-lg mb-3 w-50 m-auto"
+                arial-label=".form-select-lg example"
+                value={memeImg}
+              >
+                {options.map((option) => {
+                  return (
+                    <option key={option.id} value={option.id}>
+                      {option.name}
+                    </option>
+                  )
+                })}
+              </select>
+              <section className="my-5 sketchpicker">
+                <SketchPicker
+                  onChange={(color) => {
+                    setSketchPickerColor(color.rgb)
+                  }}
+                  color={sketchPickerColor}
+                />
+              </section>
+            </div>
+            <div className="col-sm-12 col-lg-6 showMeme">
+              <Subtitle subtitleText="Your meme" />
+              <section className="newMeme">
+                <Figure
+                  memeTextUp={memeTextUp}
+                  memeTextDown={memeTextDown}
+                  memeImg={memeImg}
+                  imgAlt="meme"
+                  sketchPickerColor={sketchPickerColor}
+                />
+              </section>
+            </div>
+          </div>
+          <div className="col-sm-12">
+            <Button type="submit" btnText="Download meme" />
+          </div>
         </form>
       </section>
     </>
