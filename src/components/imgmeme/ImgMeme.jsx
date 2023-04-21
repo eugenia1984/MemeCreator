@@ -20,6 +20,7 @@ const ImgMemes = () => {
     a: '1'
   })
   const [allMemes, setAllMemes] = useState([])
+  const node = d.querySelector('#exportar')
   const Swal = require('sweetalert2')
 
   const handleMemeImg = (e) => {
@@ -36,8 +37,10 @@ const ImgMemes = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    html2canvas(d.querySelector('#exportar')).then(function (canvas) {
-      const img = canvas.toDataURL('memes/jpg') // aca hay que cambiar a quetome el memeImg el problema es que viene de otra url
+    html2canvas(node, { allowTaint: true, useCORS: true }).then(function (
+      canvas
+    ) {
+      const img = canvas.toDataURL('memes/jpg')
       const link = d.createElement('a')
       link.download = 'new-meme.jpg'
       link.href = img
@@ -69,9 +72,6 @@ const ImgMemes = () => {
     }
     getMemes()
   }, [])
-
-  // Este para ver si traigo bien las imagenes, despues se borra
-  console.log(allMemes) 
 
   return (
     <>
