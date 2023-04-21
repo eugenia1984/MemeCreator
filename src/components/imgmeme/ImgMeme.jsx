@@ -8,6 +8,7 @@ import { options } from '../../utils/utils'
 import Button from '../atoms/button/Button'
 import './ImgMeme.css'
 import InputForm from '../atoms/input/InputForm'
+import LabelForm from '../atoms/label/LabelForm'
 
 const ImgMemes = () => {
   const d = document
@@ -65,17 +66,25 @@ const ImgMemes = () => {
     <>
       <section>
         <form onSubmit={handleSubmit}>
-          <Subtitle subtitleText="Enter the text of your meme to be shown on the top of the image" />
+          <LabelForm
+            htmlFor="meme1"
+            text="Enter the text of your meme to be shown on the top of the image"
+          />
           <InputForm
             onChange={handleMemeTextUp}
             value={memeTextUp}
             name="meme1"
+            id="meme1"
           />
-          <Subtitle subtitleText="Enter the text of your meme to be shown at the bottom of the image" />
+          <LabelForm
+            htmlFor="meme2"
+            text="Enter the text of your meme to be shown at the bottom of the image"
+          />
           <InputForm
             onChange={handleMemeTextDown}
             value={memeTextDown}
             name="meme2"
+            id="meme2"
           />
           <Subtitle subtitleText="Choose your image" />
           <select
