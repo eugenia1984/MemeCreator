@@ -1,4 +1,4 @@
-# <img src="https://img.icons8.com/doodle/48/null/trollface.png"/> Meme Generator
+# <img src="https://img.icons8.com/doodle/48/null/trollface.png"/> Meme Creator
 
 La quinta práctica del curso de **React** con **Codo a Codo**. 
 
